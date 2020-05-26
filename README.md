@@ -1,2 +1,2 @@
-# ytakeMatlabUtils
-My MATLAB utility libs
+# MatlabUtils
+My MATLAB utilities
