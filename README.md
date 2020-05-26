@@ -1,2 +1,2 @@
 # MatlabUtils
-My MATLAB utilities
+A MATLAB utilitly library
