@@ -1,2 +1,2 @@
 # MatlabUtils
-A MATLAB utilitly codebase
+A MATLAB utilitly library
