@@ -8,7 +8,7 @@ function [TrueIndCellArray, RisingInd, FallingInd] = ssf_FindConsecutiveTrueChun
 % RisingInd: indexes of rising edges
 % FallingInd: indexes of falling egdes
 %
-% Copyright (C) Yuichi Takeuchi 2017, 2018
+% Copyright (C) 2017, 2018 Yuichi Takeuchi 
 %
 
 TrueIndex = find([0 srcLogicalVector] ~= 0);
