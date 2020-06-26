@@ -9,10 +9,10 @@ function [returnVar,msg] = RemoveDCfromDat(filename,nbChan)
 %     nbChan: total number of channels in dat file
 % 
 % Adrien Peyrache 2011
-%
+% Yuichi Takeuchi 2020
 
 fprintf('Removing baseline from %s\n',filename)
-%try
+try
     infoFile = dir(filename);
     
     chunk = 1e6;
@@ -29,9 +29,8 @@ fprintf('Removing baseline from %s\n',filename)
     m.Data = d(:);
     clear d m
     
-    h = waitbar(0, 'Removing DC...');
     for ix=1:nbChunks-1
-        waitbar(ix/(nbChunks-1));
+        fprintf('%d/%d chunks', ix, (nbchunks-1))
         m = memmapfile(filename,'Format','int16','Offset',ix*chunk*nbChan*2,'Repeat',chunk*nbChan,'writable',true);
         d = m.Data;
         d = reshape(d,[nbChan chunk]);
@@ -39,7 +38,6 @@ fprintf('Removing baseline from %s\n',filename)
         m.Data = d(:);
         clear d m
     end
-    close(h)
     
     newchunk = infoFile.bytes/(2*nbChan)-nbChunks*chunk;
     if newchunk
@@ -53,10 +51,8 @@ fprintf('Removing baseline from %s\n',filename)
     warning on
     returnVar = 1;
     msg = '';
-    
-%catch
-%    keyboard
-%    returnVar = 0;
-%    msg = lasterr; 
-%end
-clear m
+catch
+    keyboard
+    returnVar = 0;
+    msg = lasterr; 
+end
