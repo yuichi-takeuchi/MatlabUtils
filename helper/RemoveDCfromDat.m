@@ -12,7 +12,7 @@ function [returnVar,msg] = RemoveDCfromDat(filename,nbChan)
 % Yuichi Takeuchi 2020
 
 fprintf('Removing baseline from %s\n',filename)
-try
+%try
     infoFile = dir(filename);
     
     chunk = 1e6;
@@ -51,8 +51,8 @@ try
     warning on
     returnVar = 1;
     msg = '';
-catch
-    keyboard
-    returnVar = 0;
-    msg = lasterr; 
-end
+%catch
+%    keyboard
+%    returnVar = 0;
+%    msg = lasterr; 
+%end
