@@ -30,7 +30,7 @@ fprintf('Removing baseline from %s\n',filename)
     clear d m
     
     for ix=1:nbChunks-1
-        fprintf('%d/%d chunks', ix, (nbchunks-1))
+        fprintf('%d/%d chunks', ix, (nbChunks-1))
         m = memmapfile(filename,'Format','int16','Offset',ix*chunk*nbChan*2,'Repeat',chunk*nbChan,'writable',true);
         d = m.Data;
         d = reshape(d,[nbChan chunk]);
