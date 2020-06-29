@@ -2,7 +2,7 @@ function [ flag ] = figsf_3ANOVAColorMat1( sBasicStats, dataVarNames, condVec, c
 %
 % control: 0 for open-loop and 1 for closed-loop
 %
-% Copyright (c) Yuichi Takeuchi 2018, 2019
+% Copyright 2018, 2019 (c) Yuichi Takeuchi
 
 close all
 flag = 0;

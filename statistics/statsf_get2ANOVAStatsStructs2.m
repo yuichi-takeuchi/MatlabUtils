@@ -1,16 +1,13 @@
-function [ sBasicStats, sStatsTest ] = statsf_get2ANOVAStatsStructs1( srcTable, dataVarNames, OnOffVarName, linearVarName)
+function [ sBasicStats, sStatsTest ] = statsf_get2ANOVAStatsStructs2( srcTable, dataVarNames, linearVarName, OnOffIndex)
 %
 % This function returns structures containing results of discriptive
 % statistics and statistical tests.
-% 
-% Usage:
-%   [ sBasicStats, sStatsTest ] = statsf_getBasicStatsAndTestStructs1( srcTable, VarNames, logicVec )
 %
 % INPUTS:
 %    srcTable (table): source table
 %    dataVarNames (cell): variable name list for quantitative analysis
-%    OnOffVarName (char): variable name for on/off factor
 %    linearVarName (char): variabl name for linear factor
+%    OnOffIndex (logical): logical vector, 0 for off and 1 for true
 % OUTPUT:
 %    sBasicStats: Cell vector, each element of which contains one
 %    sStatsTest: structure for statistical tests
@@ -19,10 +16,10 @@ function [ sBasicStats, sStatsTest ] = statsf_get2ANOVAStatsStructs1( srcTable, 
 %
 
 for i = 1:length(dataVarNames)
-    Off = srcTable.(dataVarNames{i})(srcTable.(OnOffVarName) == 0);
-    OffLin = srcTable.(linearVarName)(srcTable.(OnOffVarName) == 0);
-    On  = srcTable.(dataVarNames{i})(srcTable.(OnOffVarName) == 1);
-    OnLin = srcTable.(linearVarName)(srcTable.(OnOffVarName) == 1);
+    Off = srcTable.(dataVarNames{i})(OnOffIndex);
+    OffLin = srcTable.(linearVarName)(OnOffIndex);
+    On  = srcTable.(dataVarNames{i})(OnOffIndex);
+    OnLin = srcTable.(linearVarName)(OnOffIndex);
        
     % calculating basic statistics
     sBasicStats(i).Variable = dataVarNames{i};

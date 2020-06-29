@@ -17,9 +17,9 @@ RefValue = sort(unique(srcValue2));
 for i = 1:length(unique(srcValue2))
     Value = srcValue1(srcValue2 == RefValue(i));
     
-    Mean(i) = mean(Value);
-    Std(i) = std(Value);
-    Sem(i) = sem(Value);
+    Mean(i) = nanmean(Value);
+    Std(i) = nanstd(Value);
+    Sem(i) = nansem(Value);
     Prctile(:,i) = prctile(Value, [0 10 25 50 75 90 100]);
 end
 
