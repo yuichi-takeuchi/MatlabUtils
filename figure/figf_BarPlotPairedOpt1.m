@@ -2,7 +2,7 @@ function [ hs ] = figf_BarPlotPairedOpt1( srcVecBar, srcMatScat, fignum )
 %
 % [ Mean, Std, Sem, Prctile ] = stats_Summary1( srcMat )
 %
-% Copyright (C) Yuichi Takeuchi 2017
+% Copyright (C) 2017 Yuichi Takeuchi
 
 hfig = figure(fignum);
 hax = axes; % subplot
