@@ -18,7 +18,7 @@ function [ sBasicStats, sStatsTest ] = statsf_get2ANOVAStatsStructs3( dataVector
 Off = dataVector(~OnOffIndex);
 OffLin = linearVector(~OnOffIndex);
 On  = dataVector(OnOffIndex);
-OnLin = linearVector(~OnOffIndex);
+OnLin = linearVector(OnOffIndex);
 
 % calculating basic statistics
 sBasicStats.Variable = varName;
