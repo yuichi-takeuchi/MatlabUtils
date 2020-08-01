@@ -17,24 +17,19 @@ nSamples = floor(infoFile.bytes/(nChannels*2));
 m = memmapfile(srcName,'Format', {'int16', [nChannels nSamples], 'x'});
 ind = 1:numel(Channels);
 Period = Segment(1):Segment(2);
-disp('retrieving the data segment...')
+% disp('retrieving the data segment...')
 srcVar(ind,Period-Segment(1)+1) = m.Data.x(Channels(ind),Period);
-disp('done')
-
-fprintf('Writing %s\n', destName)
+% disp('done')
 
 % Starting information
-disp('Starting extraction...');
-h = waitbar(0,'Writing a dat file...');
+fprintf('Writing %s\n', destName)
+disp('Starting segment extraction...');
 
 % Open input file and output file
 fid = fopen(destName,'w');
-% count2 = fwrite(fid,srcVar,'int16');
 fwrite(fid,srcVar,'int16');
 fclose(fid);
 
 % Finishing info
-close(h)
-disp('Done.');
-
+disp('Segment extraction Done.');
 flag = 1;
