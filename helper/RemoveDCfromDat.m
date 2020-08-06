@@ -27,16 +27,16 @@ fprintf('Removing baseline from %s\n',filename)
     meanD = mean(d,2);
     d = d-int16(meanD*ones(1,chunk));
     m.Data = d(:);
-    clear d m
+%     clear d m
     
     for ix=1:nbChunks-1
-        fprintf('%d/%d chunks', ix, (nbChunks-1))
+        fprintf('%d/%d chunks.\n', ix, (nbChunks-1))
         m = memmapfile(filename,'Format','int16','Offset',ix*chunk*nbChan*2,'Repeat',chunk*nbChan,'writable',true);
         d = m.Data;
         d = reshape(d,[nbChan chunk]);
         d = d-int16(meanD*ones(1,chunk));
         m.Data = d(:);
-        clear d m
+%         clear d m
     end
     
     newchunk = infoFile.bytes/(2*nbChan)-nbChunks*chunk;
