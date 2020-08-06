@@ -22,7 +22,7 @@ d = reshape(d, nChannels, []);
 dDs = d(:,1:floor(sr/srLFP):end);
 disp('resampling done')
 [flag] = yfWriteDatFile(dDs,[datfilenamebase '_DSampled.dat']);
-fprintf('yfWriteDatFile flag = %s', flag)
+fprintf('yfWriteDatFile flag = %s\n', flag)
 
 % Extract the digital channel
 disp('extracting a digital channel...')
@@ -73,14 +73,14 @@ for i = 1:2
                         [datfilenamebase '_reorg.dat'],...
                         channelvector(i,:),...
                         nChannels);
-	fprintf('extraction of HS inputs of subject%d done', i)
+	fprintf('extraction of HS inputs of subject%d done.\n', i)
 
     % Remove DC from analog and headstage input channels file
     disp('removing DC shifts from analog channels...')
     % [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_stim.dat'], 1);
     [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_reorg.dat'], 30);
     [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_adc_' num2str(i) '.dat'], 1);
-    fprintf('DC removals of subject%d done', i)
+    fprintf('DC removals of subject%d done.\n', i)
 
     % Low-pass filtering LFP data
     disp('Low-pass filtering...')
@@ -91,7 +91,7 @@ for i = 1:2
                     3,...
                     srLFP);
     % or filtf_LowPassButter2 for previous Matlab version
-    fprintf('Low-pass filtering of subject%d done', i)
+    fprintf('Low-pass filtering of subject%d done.\n', i)
 
     % High-pass filtering LFP data
     disp('High-pass filtering...')
@@ -102,7 +102,7 @@ for i = 1:2
                     3,...
                     srLFP);
     % or filtf_LowPassButter2 for previous Matlab version
-    fprintf('Hight-pass filtering of subject%d done', i)
+    fprintf('Hight-pass filtering of subject%d done.\n', i)
     copyfile([datfilenamebase '_LFP_reorg.dat'], [datfilenamebase '_LFP_reorg_' num2str(i) '.dat'])
 end
 
