@@ -35,11 +35,11 @@ disp('channel extraction done.')
 % Extract the stim waveform channel
 disp('extracting analog input channels...')
 apf_ExtractChannels([datfilenamebase '_DSampled.dat'],...
-                    [datfilenamebase '_1_adc.dat'],...
+                    [datfilenamebase '_adc.dat_1'],...
                     [61],...
                     nChannels);
 apf_ExtractChannels([datfilenamebase '_DSampled.dat'],...
-                    [datfilenamebase '_2_adc.dat'],...
+                    [datfilenamebase '_adc_2.dat'],...
                     [62],...
                     nChannels);
 disp('extracting analog channels done.')
@@ -79,7 +79,7 @@ for i = 1:2
     disp('removing DC shifts from analog channels...')
     % [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_stim.dat'], 1);
     [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_reorg.dat'], 30);
-    [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_' num2str(i) '_adc.dat'], 1);
+    [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_adc_' num2str(i) '.dat'], 1);
     fprintf('DC removals of subject%d done', i)
 
     % Low-pass filtering LFP data
@@ -103,7 +103,7 @@ for i = 1:2
                     srLFP);
     % or filtf_LowPassButter2 for previous Matlab version
     fprintf('Hight-pass filtering of subject%d done', i)
-    copyfile([datfilenamebase '_LFP_reorg.dat'], [datfilenamebase '_' num2str(i) '_LFP_reorg.dat'])
+    copyfile([datfilenamebase '_LFP_reorg.dat'], [datfilenamebase '_LFP_reorg_' num2str(i) '.dat'])
 end
 
 % deleting unnecessary files
