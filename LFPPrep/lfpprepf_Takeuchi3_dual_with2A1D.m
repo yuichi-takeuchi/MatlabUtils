@@ -9,7 +9,7 @@ function [ flag ] = lfpprepf_Takeuchi3_dual_with2A1D( datfilenamebase, sr, srLFP
 %   datfilenamebase: base name of the .dat file to be read
 %   nChannels: total number of recording channels
 % 
-% Copyright (C) Yuichi Takeuchi 2017, 2018
+% Copyright (C) 2017–2020 Yuichi Takeuchi
 %
 
 flag = 0;
@@ -20,7 +20,9 @@ m = memmapfile([datfilenamebase '.dat'], 'format', 'int16');
 d = m.data;
 d = reshape(d, nChannels, []);
 dDs = d(:,1:floor(sr/srLFP):end);
+disp('resampling done')
 [flag] = yfWriteDatFile(dDs,[datfilenamebase '_DSampled.dat']);
+fprintf('yfWriteDatFile flag = %s', flag)
 
 % Extract the digital channel
 disp('extracting a digital channel...')
@@ -28,7 +30,7 @@ apf_ExtractChannels([datfilenamebase '_DSampled.dat'],...
                     [datfilenamebase '_dig.dat'],...
                     [63],...
                     nChannels);
-disp('done.')
+disp('channel extraction done.')
 
 % Extract the stim waveform channel
 disp('extracting analog input channels...')
@@ -40,7 +42,7 @@ apf_ExtractChannels([datfilenamebase '_DSampled.dat'],...
                     [datfilenamebase '_2_adc.dat'],...
                     [62],...
                     nChannels);
-disp('done.')
+disp('extracting analog channels done.')
 
 channelvector = [2 1 3 ...
                 5 6 4 ...
@@ -71,14 +73,14 @@ for i = 1:2
                         [datfilenamebase '_reorg.dat'],...
                         channelvector(i,:),...
                         nChannels);
-    disp('done.')
+	fprintf('extraction of HS inputs of subject%d done', i)
 
     % Remove DC from analog and headstage input channels file
     disp('removing DC shifts from analog channels...')
     % [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_stim.dat'], 1);
     [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_reorg.dat'], 30);
     [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_' num2str(i) '_adc.dat'], 1);
-    disp('done.')
+    fprintf('DC removals of subject%d done', i)
 
     % Low-pass filtering LFP data
     disp('Low-pass filtering...')
@@ -89,7 +91,7 @@ for i = 1:2
                     3,...
                     srLFP);
     % or filtf_LowPassButter2 for previous Matlab version
-    disp('Low-pass filtering done.')
+    fprintf('Low-pass filtering of subject%d done', i)
 
     % High-pass filtering LFP data
     disp('High-pass filtering...')
@@ -100,7 +102,7 @@ for i = 1:2
                     3,...
                     srLFP);
     % or filtf_LowPassButter2 for previous Matlab version
-    disp('High-pass filtering done.')
+    fprintf('Hight-pass filtering of subject%d done', i)
     copyfile([datfilenamebase '_LFP_reorg.dat'], [datfilenamebase '_' num2str(i) '_LFP_reorg.dat'])
 end
 
