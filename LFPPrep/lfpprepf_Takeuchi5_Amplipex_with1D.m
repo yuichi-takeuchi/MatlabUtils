@@ -24,7 +24,7 @@ d = reshape(d, nChannels, []);
 dDs = d(:,1:floor(sr/srLFP):end);
 disp('resampling done')
 [flag] = yfWriteDatFile(dDs,[datfilenamebase '_DSampled.dat']);
-fprintf('yfWriteDatFile flag = %s', flag)
+fprintf('yfWriteDatFile flag = %s\n', flag)
 
 % Extract the digital channel
 disp('extracting a digital channel...')
