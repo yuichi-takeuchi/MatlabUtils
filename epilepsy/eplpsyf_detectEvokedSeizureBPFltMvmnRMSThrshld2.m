@@ -16,7 +16,10 @@ for DataNo = 1:length(DataStruct)
     datfilenameVec = Data.datfilename;
     for RatNo = 1:length(datfilenameVec)
         datfilename = Data.datfilename{RatNo};
+        disp(datfilename)
+        fprintf('RatNo: %d\n', RatNo)
          for TrialNo = 1:size(Timestamp{1,cParams.TSbit},1) % TrialNo = 1:size(Timestamp{1,cParams.TSbit},1)-1
+             fprintf('TrialNo: %d\n', TrialNo)
             % Data access, extraction of a period
             TS = Timestamp{1,cParams.TSbit}(TrialNo,:);
             Segment = [TS(1)-cParams.BaselineDrtn, TS(1)+cParams.TestDrtn];
@@ -107,6 +110,7 @@ for DataNo = 1:length(DataStruct)
             Tb = table(LTR, Date, expNo1, expNo2, ADDrtn,  HPCDrtn, CtxDrtn);
             Tb.Properties.VariableNames = {'LTR' 'Data' 'expNo1' 'expNo2' 'ADDrtn' 'HPCDrtn' 'CtxDrtn'};
             writetable(Tb, ['../results/' RecInfo.datString{DataNo} '_' num2str(RatNo) '.csv']);
+            disp('csv output done')
         end
     end
 end
