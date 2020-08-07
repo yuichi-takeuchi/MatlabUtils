@@ -1,6 +1,6 @@
 function [ flag ] = eplpsyf_detectEvokedSeizureBPFltMvmnRMSThrshld2( RecInfo, DataStruct, cParams, figFlag, tbFlag)
 %
-% Copyright (C) 2018 Yuichi Takeuchi
+% Copyright (C) 2018–2020 Yuichi Takeuchi
 
 % Setting parameters
 rmsCoeff = [3 3 3 3]; % Coeff Std for MEC, rHPC, lHPC, Ctx
@@ -116,6 +116,3 @@ for DataNo = 1:length(DataStruct)
 end
 flag = 1;
 disp('done');toc
-
-
-
