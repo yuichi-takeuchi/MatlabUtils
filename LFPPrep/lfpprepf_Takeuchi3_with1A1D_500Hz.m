@@ -9,7 +9,7 @@ function [ flag ] = lfpprepf_Takeuchi3_with1A1D_500Hz( datfilenamebase, srLFP, n
 %   datfilenamebase: base name of the .dat file to be read
 %   nChannels: total number of recording channels
 % 
-% Copyright (C) Yuichi Takeuchi 2017, 2018
+% Copyright (C) 2017–2020 Yuichi Takeuchi
 %
 
 flag = 0;
@@ -23,15 +23,15 @@ apf_ExtractChannels([datfilenamebase '.dat'],...
                     [datfilenamebase '_dig.dat'],...
                     [32],...
                     nChannels);
-disp('done.')
+disp('channel extraction done.')
 
 % Extract the stim waveform channel
 disp('extracting analog input channels...')
 apf_ExtractChannels([datfilenamebase '.dat'],...
-                    [datfilenamebase '_1_adc.dat'],...
+                    [datfilenamebase '_adc_1.dat'],...
                     [31],...
                     nChannels);
-disp('done.')
+disp('extracting analog channel done.')
 
 channelvector = [2 1 3 ...
                 5 6 4 ...
@@ -50,14 +50,14 @@ apf_ExtractChannels([datfilenamebase '.dat'],...
                     [datfilenamebase '_reorg.dat'],...
                     channelvector,...
                     nChannels);
-disp('done.')
+disp('extraction of HS inputs done.')
 
 % Remove DC from analog and headstage input channels file
 disp('removing DC shifts from analog channels...')
 % [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_stim.dat'], 1);
 [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_reorg.dat'], 30);
-[returnVar,msg] = RemoveDCfromDat([datfilenamebase '_1_adc.dat'], 1);
-disp('done.')
+[returnVar,msg] = RemoveDCfromDat([datfilenamebase '_adc_1.dat'], 1);
+disp('DC removals done.')
 
 % Low-pass filtering LFP data
 disp('Low-pass filtering...')
@@ -80,7 +80,8 @@ filtf_HighPassButter1([datfilenamebase '_LFP_reorgtemp.dat'],...
                 srLFP);
 % or filtf_LowPassButter2 for previous Matlab version
 disp('High-pass filtering done.')
-copyfile([datfilenamebase '_LFP_reorg.dat'], [datfilenamebase '_1_LFP_reorg.dat'])
+
+copyfile([datfilenamebase '_LFP_reorg.dat'], [datfilenamebase '_LFP_reorg_1.dat'])
 
 % deleting unnecessary files
 delete([datfilenamebase  '_reorg.dat'])
