@@ -1,7 +1,5 @@
 function [ flag ] = lfpprepf_Takeuchi1_with1A1D( datfilenamebase, sr, srLFP, nChannels)
 %
-% [ flag ] = lfpprepf_Takeuchi1_with1A1D( datfilenamebase, nChannels)
-%
 % This function resamples, DC removes, extracts dig and stim waves from the
 % original dat file
 %
@@ -9,8 +7,7 @@ function [ flag ] = lfpprepf_Takeuchi1_with1A1D( datfilenamebase, sr, srLFP, nCh
 %   datfilenamebase: base name of the .dat file to be read
 %   nChannels: total number of recording channels
 % 
-% Copyright (C) 2017 Yuichi Takeuchi
-%
+% Copyright (C) 2017–2020 Yuichi Takeuchi
 
 flag = 0;
 
@@ -35,7 +32,7 @@ disp('done.')
 disp('extracting a digital channel...')
 [ DigCh ] = fileiof_getChannelsFromBinary1( [datfilenamebase '.dat'], 20, nChannels );
 DigDS = DigCh(1:floor(sr/srLFP):end);
-[flag] = yfWriteDatFile(DigDS,[datfilenamebase '_dig.dat']);
+[flag] = fileiof_writeInt16DatFile(DigDS,[datfilenamebase '_dig.dat']);
 % apf_ExtractChannels([datfilenamebase '_DSampled1.dat'],...
 %                     [datfilenamebase '_dig.dat'],...
 %                     [32],...

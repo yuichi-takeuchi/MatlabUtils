@@ -9,7 +9,7 @@ function [ flag ] = lfpprepf_Takeuchi3_dual_with2A1D_500Hz( datfilenamebase, srL
 %   datfilenamebase: base name of the .dat file to be read
 %   nChannels: total number of recording channels
 % 
-% Copyright (C) Yuichi Takeuchi 2017, 2018
+% Copyright (C) 2017, 2018 Yuichi Takeuchsi
 %
 
 flag = 0;

@@ -19,7 +19,7 @@ function [ flag ] = lfpprepf_Takeuchi3_dual_500Hz_WOFilt_Template1( RecInfo )
 %         'DataFolder', ['D:\Research\Data\LongTermRec1\LTRec1_85_86\180815']...
 %         );
 %
-% Copyright (C) Yuichi Takeuchi 2017, 2018
+% Copyright (C) 2017, 2018 Yuichi Takeuchi 
 %
 
 % Copy Template folder structure
