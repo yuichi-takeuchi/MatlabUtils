@@ -1,8 +1,8 @@
 function [ TSCellVector ] = digchf_dig2TimestampCellVector2( datString, minSegDrtn, sr)
 %
 % INPUTS:
-%       datString: String vector, e.g. [ "AP_180815_exp01_01"
-%       "AP_180815_exp01_02"    "AP_180815_exp02_01"]
+%       datString: String vector, e.g. [ "AP_180815_exp1_1"
+%       "AP_180815_exp1_2"    "AP_180815_exp2_1"]
 %       minSegDrtn: minimam segment duration for rejection (in second)
 %       sr: samplirng rate (in Hz)
 %
@@ -10,13 +10,12 @@ function [ TSCellVector ] = digchf_dig2TimestampCellVector2( datString, minSegDr
 %       Cell vector of timestamp cell array of 1st to 4th bit
 %       matfile of each datfile
 %     
-% Copyright (C) 2018, 2020 Yuichi Takeuchi
+% Copyright (C) 2018–2020 Yuichi Takeuchi
 %
 TSCellVector = cell(1,numel(datString));
 
 for i = 1:numel(datString)
     digdatfilename = ['tmp/' datString{i} '_dig.dat'];
-%    disp(['processing ' digdatfilename '...']); tic
     
     % Memory mapping
     mdig = memmapfile(digdatfilename, 'format', 'int16');
@@ -38,10 +37,4 @@ for i = 1:numel(datString)
     
     % Output variable
     TSCellVector{i} = TSCell;
-    
-%     % Save mat file
-%     save([datString{i} '_Timestamp.mat'], 'TSCellVector','-v7.3')
-%     disp('done');toc
 end
-
-
