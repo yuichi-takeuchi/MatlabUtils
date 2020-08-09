@@ -7,7 +7,7 @@ function [DataOut] = filtf_LowPassButter3(DataIn, varargin)
 % fs = sampling frequency
 % DataIn: (channels, time series)
 %
-% (C) Yuichi Takeuchi 2016
+% Copyright (C) 2016-2020 Yuichi Takeuchi
 
 [lowpasscutoff, lowpassorder, fs] = DefaultArgs(varargin, {300, 3, 2e4});
 nyquistfreq = fs/2;
