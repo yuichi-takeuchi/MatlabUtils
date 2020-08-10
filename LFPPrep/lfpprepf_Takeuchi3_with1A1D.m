@@ -42,7 +42,7 @@ disp('done.')
 % Extract the stim waveform channel
 disp('extracting a stim waveform channel...')
 apf_ExtractChannels([datfilenamebase '_DSampled.dat'],...
-                    [datfilenamebase '_adc.dat'],...
+                    [datfilenamebase '_adc_1.dat'],...
                     [31],...
                     nChannels);
 disp('done.')
@@ -60,7 +60,7 @@ disp('done.')
                 
 % Remove DC from analog channels file
 disp('removing DC shifts from analog channels...')
-[returnVar,msg] = RemoveDCfromDat([datfilenamebase '_adc.dat'], 1);
+[returnVar,msg] = RemoveDCfromDat([datfilenamebase '_adc_1.dat'], 1);
 [returnVar,msg] = RemoveDCfromDat([datfilenamebase '_reorg.dat'], (nChannels - 2));
 disp('done.')
 
