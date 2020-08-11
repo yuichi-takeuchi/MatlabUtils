@@ -1,5 +1,5 @@
 function [ flag ] = eplpsyf_cutPostInductionTimeACh1(DataStruct, cParams)
-%
+% for closed-loop interventions
 % Copyright (C) 2020 Yuichi Takeuchi
 
 % Main procedure
