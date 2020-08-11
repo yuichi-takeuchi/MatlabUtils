@@ -86,9 +86,12 @@ filtf_HighPassButter1([datfilenamebase '_LFP_reorgtemp.dat'],...
 % or filtf_LowPassButter2 for previous Matlab version
 disp('High-pass filtering done.')
 
+copyfile([datfilenamebase '_LFP_reorg.dat'], [datfilenamebase '_LFP_reorg_1.dat'])
+
 % deleting unnecessary files
 delete([datfilenamebase '_DSampled.dat'])
 delete([datfilenamebase  '_reorg.dat'])
 delete([datfilenamebase '_LFP_reorgtemp.dat'])
+delete([datfilenamebase '_LFP_reorg.dat'])
 
 flag = 1;
