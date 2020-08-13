@@ -12,7 +12,7 @@ function [ sBasicStats, sStatsTest ] = statsf_getBasicStatsAndTestStructs2( srcV
 %    sBasicStats: Cell vector, each element of which contains
 %    sStatsTest: structure for statistical tests
 %
-% Copyright (c) Yuichi Takeuchi 2019
+% Copyright (c) 2019, 2020 Yuichi Takeuchi
 %
     
 % calculating basic statistics
