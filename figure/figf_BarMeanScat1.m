@@ -4,8 +4,11 @@ function [ hs ] = figf_BarMeanScat1( idVec, dataVec, cndtnVec, fignum )
 
 unqX = unique(cndtnVec);
 indX = 1:length(unqX);
-cdata{indX} = dataVec(cndtnVec == indX);
+for i = indX
+    cdata{i} = dataVec(cndtnVec == i);
+end
 barY = cellfun(@mean, cdata);
+
 
 hfig = figure(fignum);
 hax = axes; % subplot
@@ -15,34 +18,35 @@ hb = bar(hax, indX, barY);
 unqIdVec = unique(idVec);
 
 for i = 1:length(unqIdVec)
-    xpi = cndtnVec + 0.25*(rand(size(cndtnVec))-0.5);
+    idx = idVec == unqIdVec(i);
+    xpi = cndtnVec(idx) + 0.25*(rand(size(cndtnVec(idx)))-0.5);
     switch mod(i,12)
         case 1
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), 'o');
+            hsct(i) = plot(hax, xpi, dataVec(idx), 'o');
         case 2
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), '+');
+            hsct(i) = plot(hax, xpi, dataVec(idx), '+');
         case 3
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), '*');
+            hsct(i) = plot(hax, xpi, dataVec(idx), '*');
         case 4
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), 'x');
+            hsct(i) = plot(hax, xpi, dataVec(idx), 'x');
         case 5 
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), 's');
+            hsct(i) = plot(hax, xpi, dataVec(idx), 's');
         case 6
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), 'd');
+            hsct(i) = plot(hax, xpi, dataVec(idx), 'd');
         case 7
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), '^');
+            hsct(i) = plot(hax, xpi, dataVec(idx), '^');
         case 8
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), 'v');
+            hsct(i) = plot(hax, xpi, dataVec(idx), 'v');
         case 9
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), '>');
+            hsct(i) = plot(hax, xpi, dataVec(idx), '>');
         case 10
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), '<');
+            hsct(i) = plot(hax, xpi, dataVec(idx), '<');
         case 11
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), 'p');
+            hsct(i) = plot(hax, xpi, dataVec(idx), 'p');
         case 12
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), 'h');
+            hsct(i) = plot(hax, xpi, dataVec(idx), 'h');
         otherwise
-            hsct(i) = plot(hax, xpi, dataVec(idVec == unqIDVec(i)), '.');
+            hsct(i) = plot(hax, xpi, dataVec(idx), '.');
     end
 end
 
