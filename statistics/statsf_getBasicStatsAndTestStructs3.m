@@ -1,4 +1,4 @@
-function [ sBasicStats, sStatsTest ] = statsf_getBasicStatsAndTestStructs2( data1, data2 )
+function [ sBasicStats, sStatsTest ] = statsf_getBasicStatsAndTestStructs3( dataVec, cndtnVec )
 %
 % This function returns structures containing results of discriptive
 % statistics and statistical tests.
@@ -7,16 +7,17 @@ function [ sBasicStats, sStatsTest ] = statsf_getBasicStatsAndTestStructs2( data
 %   [ sBasicStats, sStatsTest ] = statsf_getBasicStatsAndTestStructs2( data1, data2 )
 %
 % INPUTS:
-%    data1,2 (vector): data with independent values
+%    dataVec: 
+%    cndtnVec: grouping vector
 % OUTPUT:
-%    sBasicStats: Cell vector, each element of which contains
+%    sBasicStats: structure for basic statistics
 %    sStatsTest: structure for statistical tests
 %
-% Copyright (c) 2019, 2020 Yuichi Takeuchi
+% Copyright (c) 2020 Yuichi Takeuchi
 %
     
 % calculating basic statistics
-[ Mean, Std, Sem, Prctile ] = stats_Summary3( data1, data2 );
+[ Mean, Std, Sem, Prctile ] = stats_Summary2( dataVec, cndtnVec );
 sBasicStats.Mean = Mean;
 sBasicStats.Std = Std;
 sBasicStats.Sem = Sem;

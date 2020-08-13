@@ -1,8 +1,6 @@
-function [ Mean, Std, Sem, Prctile ] = stats_Summary2( dataVec, cndtnVec )
-%
-% stats_Summary2( dataVec, cndtnVec )
+function [sBasicStats] = stats_sBasicStats_anova1( dataVec, cndtnVec )
 %   
-% Copyright (C) 2017–2020 Yuichi Takeuchi
+% Copyright (C) 2020 Yuichi Takeuchi
 %
 
 Mean = zeros(1, length(unique(cndtnVec)));
@@ -20,6 +18,11 @@ for i = 1:length(unique(cndtnVec))
     Sem(i) = nansem(Value);
     Prctile(:,i) = prctile(Value, [0 10 25 50 75 90 100]);
 end
+
+sBasicStats.Mean = Mean;
+sBasicStats.Std = Std;
+sBasicStats.Sem = Sem;
+sBasicStats.Prctile = Prctile;
 
 end
 

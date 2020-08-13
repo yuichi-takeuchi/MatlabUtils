@@ -15,7 +15,7 @@ function [ sBasicStats, sStatsTest ] = statsf_get2ANOVAStatsStructs1( srcTable, 
 %    sBasicStats: Cell vector, each element of which contains one
 %    sStatsTest: structure for statistical tests
 %
-% Copyright(c) 2018, 2019, 2020 Yuichi Takeuchi
+% Copyright(c) 2018–2020 Yuichi Takeuchi
 %
 
 for i = 1:length(dataVarNames)

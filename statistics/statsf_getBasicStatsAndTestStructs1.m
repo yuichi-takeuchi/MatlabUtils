@@ -14,7 +14,7 @@ function [ sBasicStats, sStatsTest ] = statsf_getBasicStatsAndTestStructs1( srcT
 %    sBasicStats: Cell vector, each element of which contains
 %    sStatsTest: structure for statistical tests
 %
-% (c) Yuichi Takeuchi 2018
+% Copyright (c) 2018 Yuichi Takeuchi
 %
 
 logicVec = logical(logicVec);
