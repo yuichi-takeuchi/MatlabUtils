@@ -9,7 +9,6 @@ for i = indX
 end
 barY = cellfun(@mean, cdata);
 
-
 hfig = figure(fignum);
 hax = axes; % subplot
 hold(hax,'on');
@@ -57,13 +56,13 @@ hxlabel = xlabel('');
 htitle = title('');
 
 % Building the output handle structure
-hs.hfig = hfig;
-hs.hax = hax;
-hs.hb = hb;
-hs.hsct = hsct;
-hs.hylabel = hylabel;
-hs.hxlabel = hxlabel;
-hs.htitle = htitle;
+hs.fig = hfig;
+hs.ax = hax;
+hs.bar = hb;
+hs.sct = hsct;
+hs.ylbl = hylabel;
+hs.xlbl = hxlabel;
+hs.title = htitle;
 
 end
 
