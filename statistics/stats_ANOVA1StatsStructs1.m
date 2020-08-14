@@ -1,4 +1,4 @@
-function [ sStatsTest ] = stats_ANOVA1StatsStructs1( y, group)
+function [ sStatsTest ] = stats_ANOVA1StatsStructs1( y, group, CType)
 % 
 % INPUTS:
 %    y: data vecotr to be analyzed
@@ -10,7 +10,7 @@ function [ sStatsTest ] = stats_ANOVA1StatsStructs1( y, group)
 %
 
 [p,tbl,stats] = anova1(y, group, 'off') ;
-c = multcompare(stats, 'display', 'off');
+c = multcompare(stats, 'display', 'off', 'CType', CType);
 
 sStatsTest.PValues = p;
 sStatsTest.Table = tbl;
