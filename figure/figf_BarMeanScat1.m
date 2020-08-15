@@ -62,7 +62,7 @@ hs.bar = hb;
 hs.sct = hsct;
 hs.ylbl = hylabel;
 hs.xlbl = hxlabel;
-hs.title = htitle;
+hs.ttl = htitle;
 
 end
 
