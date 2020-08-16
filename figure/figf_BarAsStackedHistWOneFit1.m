@@ -24,17 +24,17 @@ hplt = plot(hax, x, fit);
 hold(hax,'off');
 box('off')
 
-hylabel = ylabel('');
-hxlabel = xlabel('');
-htitle = title('');
+hylbl = ylabel('');
+hxlbl = xlabel('');
+httl = title('');
 
 % Building the output handle structure
 hs.ax = hax;
 hs.bar = hbr;
 hs.plt = hplt;
-hs.ylbl = hylabel;
-hs.xlbl = hxlabel;
-hs.ttl = htitle;
+hs.ylbl = hylbl;
+hs.xlbl = hxlbl;
+hs.ttl = httl;
 
 end
 
