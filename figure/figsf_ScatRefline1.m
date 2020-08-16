@@ -1,6 +1,5 @@
 function [ flag ] = figsf_ScatRefline1( xData, yData, coef, R, CTitle, CVLabel, CHLabel, colorMat, outputGraph, outputFileNameBase)
-%
-% Copyright (c) Yuichi Takeuchi 2019
+% Copyright (c) 2019 Yuichi Takeuchi
 
 close all
 flag = 0;
