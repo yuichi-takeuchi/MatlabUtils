@@ -106,10 +106,10 @@ for DataNo = 1:length(DataStruct)
     LTR = [];
     Data = [];
     expNo1 = [];
-    expno2 = [];
+    expNo2 = [];
     ADDrtn = [];
     HPCDrtn = [];
-    CrxDrtn = [];
+    CtxDrtn = [];
 end
 flag = 1;
 disp('done');toc
