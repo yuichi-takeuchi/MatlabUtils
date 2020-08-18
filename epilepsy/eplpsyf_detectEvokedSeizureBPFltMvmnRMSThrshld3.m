@@ -13,6 +13,9 @@ flag = 0;
 for DataNo = 1:length(DataStruct)
     Data = DataStruct(DataNo);
     Timestamp = Data.Timestamp;
+    if isempty(Timestamp{1,cParams.TSbit})
+        continue
+    end
     datfilenameVec = Data.datfilename;
     RatNo = DataNo;
     datfilename = Data.datfilename{RatNo};
