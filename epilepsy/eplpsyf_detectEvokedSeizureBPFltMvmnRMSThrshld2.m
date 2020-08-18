@@ -19,8 +19,8 @@ for DataNo = 1:length(DataStruct)
     datfilename = Data.datfilename{RatNo};
     disp(datfilename)
     fprintf('RatNo: %d\n', RatNo)
-     for TrialNo = 1:size(Timestamp{1,cParams.TSbit},1) % TrialNo = 1:size(Timestamp{1,cParams.TSbit},1)-1
-         fprintf('TrialNo: %d\n', TrialNo)
+    for TrialNo = 1:size(Timestamp{1,cParams.TSbit},1) % TrialNo = 1:size(Timestamp{1,cParams.TSbit},1)-1
+        fprintf('TrialNo: %d\n', TrialNo)
         % Data access, extraction of a period
         TS = Timestamp{1,cParams.TSbit}(TrialNo,:);
         Segment = [TS(1)-cParams.BaselineDrtn, TS(1)+cParams.TestDrtn];
@@ -59,16 +59,6 @@ for DataNo = 1:length(DataStruct)
         rcjctMat = [1, cParams.BaselineDrtn+uint64(floor(2*cParams.sr))]; % from the begining to the end of stimulation
         [ RiseFallCellVec ] = logicf_getTimestampCellVec1( logicSum, rcjctMat );
 
-%             % Algorithm for time-stamp rejection
-%             for i = length(RiseFallCellVec):-1:1
-%                 [ rjctIndex1{i} ] = tsf_getRejectionIndexByIntervalConditioning1( RiseFallCellVec{i}, 3, cParams.sr, true);
-%                 [ rjctIndex2{i} ] = tsf_getRejectionIndexByIntervalConditioning1( RiseFallCellVec{i}, 3, cParams.sr, false);
-%                 [C,~,~] = intersect(rjctIndex1{i}, rjctIndex2{i}+1);
-%                 if ~isempty(C)
-%                     RiseFallCellVec{i}(C(1):end,:) = [];
-%                 end
-%             end
-
         % Logical calcuration of seizures
         LogicalVec = logicSum;
         HPCLogicalVec = LogicalVec(2,:) & LogicalVec(3,:); 
@@ -86,7 +76,8 @@ for DataNo = 1:length(DataStruct)
 
         % Figure export 
         if(figFlag)
-            Title = [RecInfo.datString{DataNo} '_Rat' num2str(RatNo) '_Trial' num2str(TrialNo)];
+%             Title = [RecInfo.datString{DataNo} '_Rat' num2str(RatNo) '_Trial' num2str(TrialNo)];
+            Title = [RecInfo.datString{1} '_Rat' num2str(RatNo) '_Trial' num2str(TrialNo)];
             [ hs ] = eplpsyf_DetectionCheckFig2( segFltrd, segSmthd, LogicalVec, cParams.ChLabel, cParams.ChOrder, Rms, rmsCoeff, cParams.sr, Title);
             print(['../results/DtctnFltStd_' Title '.png'], '-dpng');
             set(gcf,'Renderer','Painters');
@@ -101,16 +92,13 @@ for DataNo = 1:length(DataStruct)
     Date = repmat(RecInfo.date, size(Timestamp{1,cParams.TSbit},1), 1);
     expNo1 = repmat(RecInfo.expnum1, size(Timestamp{1,cParams.TSbit},1), 1);
     expNo2 = repmat(RecInfo.expnum2, size(Timestamp{1,cParams.TSbit},1), 1);
-%         LTR = repmat(RecInfo.LTR(RatNo), size(Timestamp{1,cParams.TSbit},1)-1, 1);% !! minus 1 modified
-%         Date = repmat(RecInfo.date, size(Timestamp{1,cParams.TSbit},1)-1, 1);% !! minus 1 modified
-%         expNo1 = repmat(RecInfo.expnum1, size(Timestamp{1,cParams.TSbit},1)-1, 1);% !! minus 1 modified
-%         expNo2 = repmat(RecInfo.expnum2, size(Timestamp{1,cParams.TSbit},1)-1, 1);% !! minus 1 modified
 
     % csv output
     if tbFlag
         Tb = table(LTR, Date, expNo1, expNo2, ADDrtn,  HPCDrtn, CtxDrtn);
         Tb.Properties.VariableNames = {'LTR' 'Data' 'expNo1' 'expNo2' 'ADDrtn' 'HPCDrtn' 'CtxDrtn'};
-        writetable(Tb, ['../results/' RecInfo.datString{DataNo} '_' num2str(RatNo) '.csv']);
+%         writetable(Tb, ['../results/' RecInfo.datString{DataNo} '_' num2str(RatNo) '.csv']);
+        writetable(Tb, ['../results/' RecInfo.datString{1} '_' num2str(RatNo) '.csv']);
         disp('csv output done')
     end
 %     end
