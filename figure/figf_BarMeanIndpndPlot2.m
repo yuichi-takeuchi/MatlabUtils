@@ -16,14 +16,14 @@ for i = 1:length(tmpbarY)
 end
 
 hold(hax,'on');
-hb = bar(hax, indX, barY, 0.5, 'stacked');
+hb = bar(hax, indX, barY, 0.7, 'stacked');
 
 unqIdVec = unique(idVec);
 unqCndtn2 = unique(cndtnVec2);
 for i = 1:length(unqIdVec)
     for j = 1:length(unqCndtn2)
         idx = idVec == unqIdVec(i) & cndtnVec2 == j;
-        xpi = cndtnVec1(idx) + 0.25*(rand(size(cndtnVec1(idx)))-0.5);
+        xpi = cndtnVec1(idx) + 0.45*(rand(size(cndtnVec1(idx)))-0.5);
         xmat = reshape(xpi, length(unqX), []);
         ymat = reshape(dataVec(idx), length(unqX), []);
         switch mod(i,12)
