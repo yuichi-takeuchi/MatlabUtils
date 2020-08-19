@@ -9,6 +9,9 @@ nChannel = 1;
 for RatNo = 1:length(DataStruct)
     Data = DataStruct(RatNo);
     Timestamp = Data.Timestamp;
+    if isempty(Timestamp{1,cParams.TSbit})
+        continue
+    end
     datafilenamebase = Data.datafilenamebase;
     disp(datafilenamebase)
     fprintf('RatNo: %d\n', RatNo)

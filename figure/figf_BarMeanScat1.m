@@ -18,7 +18,7 @@ unqIdVec = unique(idVec);
 
 for i = 1:length(unqIdVec)
     idx = idVec == unqIdVec(i);
-    xpi = cndtnVec(idx) + 0.25*(rand(size(cndtnVec(idx)))-0.5);
+    xpi = cndtnVec(idx) + 0.65*(rand(size(cndtnVec(idx)))-0.5);
     switch mod(i,12)
         case 1
             hsct(i) = plot(hax, xpi, dataVec(idx), 'o');
