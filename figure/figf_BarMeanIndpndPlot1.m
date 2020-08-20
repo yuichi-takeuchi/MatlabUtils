@@ -16,7 +16,7 @@ for i = 1:length(tmpbarY)
 end
 
 hold(hax,'on');
-hb = bar(hax, indX, barY, 0.5, 'stacked');
+hb = bar(hax, indX, barY, 'stacked');
 
 unqIdVec = unique(idVec);
 for i = 1:length(unqIdVec)
