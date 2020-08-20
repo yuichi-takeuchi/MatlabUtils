@@ -1,6 +1,6 @@
 function [ hs ] = figf_BarPlot1( srcX, srcY, fignum )
 %
-% Copyright (C) Yuichi Takeuchi 2019
+% Copyright (C) 2019, 2020 Yuichi Takeuchi
 
 hfig = figure(fignum);
 hax = axes; % subplot

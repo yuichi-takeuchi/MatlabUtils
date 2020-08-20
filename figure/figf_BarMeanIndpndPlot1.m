@@ -1,4 +1,4 @@
-function [ hs ] = figf_BarMeanIndpndPlot1( idVec, dataVec, cndtnVec, hax )
+function [ hs ] = figf_BarMeanIndpndPlot1( idVec, dataVec, cndtnVec, randCoeff, hax )
 %
 % Copyright (C) 2020 Yuichi Takeuchi
 
@@ -21,36 +21,37 @@ hb = bar(hax, indX, barY, 0.5, 'stacked');
 unqIdVec = unique(idVec);
 for i = 1:length(unqIdVec)
     idx = idVec == unqIdVec(i);
-    xpi = cndtnVec(idx) + 0.25*(rand(size(cndtnVec(idx)))-0.5);
+    xpi = cndtnVec(idx) + randCoeff*(rand(size(cndtnVec(idx)))-0.5);
     xmat = reshape(xpi, length(unqX), []);
     ymat = reshape(dataVec(idx), length(unqX), []);
+    
     switch mod(i,12)
         case 1
-            chplt{i} = plot(hax, xmat, ymat, '--o', 'Color', [0 0.4470 0.7410]);
+            chplt{i} = plot(hax, xmat, ymat, '--o', 'Color', defaultColor(1));
         case 2
-            chplt{i} = plot(hax, xmat, ymat, '--+', 'Color', [0.8500 0.3250 0.0980]);
+            chplt{i} = plot(hax, xmat, ymat, '--+', 'Color', defaultColor(2));
         case 3
-            chplt{i} = plot(hax, xmat, ymat, '--*', 'Color', [0.9290 0.6940 0.1250]);
+            chplt{i} = plot(hax, xmat, ymat, '--*', 'Color', defaultColor(3));
         case 4
-            chplt{i} = plot(hax, xmat, ymat, '--x', 'Color', [0.4940 0.1840 0.5560]);
+            chplt{i} = plot(hax, xmat, ymat, '--x', 'Color', defaultColor(4));
         case 5 
-            chplt{i} = plot(hax, xmat, ymat, '--s', 'Color', [0.4660 0.6740 0.1880]);
+            chplt{i} = plot(hax, xmat, ymat, '--s', 'Color', defaultColor(5));
         case 6
-            chplt{i} = plot(hax, xmat, ymat, '--d', 'Color', [0.3010 0.7450 0.9330]);
+            chplt{i} = plot(hax, xmat, ymat, '--d', 'Color', defaultColor(6));
         case 7
-            chplt{i} = plot(hax, xmat, ymat, '--^', 'Color', [0.6350 0.0780 0.1840]);
+            chplt{i} = plot(hax, xmat, ymat, '--^', 'Color', defaultColor(7));
         case 8
-            chplt{i} = plot(hax, xmat, ymat, '--v', 'Color', [1 0 0]);
+            chplt{i} = plot(hax, xmat, ymat, '--v', 'Color', mean([defaultColor(1);defaultColor(2)]));
         case 9
-            chplt{i} = plot(hax, xmat, ymat, '-->', 'Color', [0 1 0]);
+            chplt{i} = plot(hax, xmat, ymat, '-->', 'Color', mean([defaultColor(3);defaultColor(4)]));
         case 10
-            chplt{i} = plot(hax, xmat, ymat, '--<', 'Color', [0 0 1]);
+            chplt{i} = plot(hax, xmat, ymat, '--<', 'Color', mean([defaultColor(5);defaultColor(6)]));
         case 11
-            chplt{i} = plot(hax, xmat, ymat, '--p', 'Color', [0 1 1]);
+            chplt{i} = plot(hax, xmat, ymat, '--p', 'Color', mean([defaultColor(7);defaultColor(1)]));
         case 12
-            chplt{i} = plot(hax, xmat, ymat, '--h', 'Color', [1 0 1]);
+            chplt{i} = plot(hax, xmat, ymat, '--h', 'Color', mean([defaultColor(2);defaultColor(3)]));
         otherwise
-            chplt{i} = plot(hax, xmat, ymat, '--.', 'Color', [1 1 0]);
+            chplt{i} = plot(hax, xmat, ymat, '--.', 'Color', [0 0 0]);
     end
 end
 

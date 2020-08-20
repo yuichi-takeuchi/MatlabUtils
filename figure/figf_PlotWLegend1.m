@@ -1,7 +1,7 @@
 function [ hs ] = figf_PlotWLegend1( srcMatX, srcMatY, CLeg, fignum )
 %
 %
-% Copyright (C) Yuichi Takeuchi 2017, 2019
+% Copyright (C) 2017, 2019 Yuichi Takeuchi
 
 hfig = figure(fignum);
 hax = axes; % subplot

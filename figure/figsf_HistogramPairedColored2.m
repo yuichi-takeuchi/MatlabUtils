@@ -2,7 +2,7 @@ function [ flag ] = figsf_HistogramPairedColored2( srcTable, VarNames, CTitle, C
 %
 % for classical side-by-side histograms
 %
-% Copyright (c) Yuichi Takeuchi 2019
+% Copyright (c) 2019, 2020 Yuichi Takeuchi
 
 close all
 flag = 0;
