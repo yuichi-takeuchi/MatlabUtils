@@ -1,4 +1,4 @@
-function [colorVec] = defaltColor(index)
+function [colorVec] = defaultColor(index)
 % Copyright (c) Yuichi Takeuchi
 switch index
     case 1
