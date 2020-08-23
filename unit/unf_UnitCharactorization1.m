@@ -1,6 +1,6 @@
-function [ hstruct ] = unf_UnitCharactorization1( UnitInfo, numRec, fignum )
+function [ hstruct ] = unf_UnitCharactorization1( UnitInfo, numRec, fignum, outputfilenamebase )
 %   
-% Copyright (C) 2017 Yuichi Takeuchi
+% Copyright (C) 2017–2020 Yuichi Takeuchi
 %
 
 hfig = figure(fignum); arrayfun(@cla,gca)
@@ -147,7 +147,8 @@ for i = 7:12
 end
 
 % file output
-print([UnitInfo(numRec).StimLabel '_' num2str(UnitInfo(numRec).datfileID) '_Clu' num2str(UnitInfo(numRec).CluID) '.pdf'], '-dpdf');
+% print(['../results/' UnitInfo(numRec).StimLabel '_' num2str(UnitInfo(numRec).datfileID) '_Clu' num2str(UnitInfo(numRec).CluID) '.pdf'], '-dpdf');
+print(['../results/' outputfilenamebase '.pdf'], '-dpdf');
 
 hstruct.hfig = hfig;
 end
