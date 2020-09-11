@@ -11,7 +11,7 @@ m = memmapfile([srcFileNameBase '.dat'], 'format', 'int16');
 d = m.data;
 d = reshape(d, nChannels, []);
 dDs = d(:,1:floor(src_sr/dst_sr):end);
-[flag] = yfWriteDatFile(dDs,[srcFileNameBase '_DSampled.dat']);
+[flag] = fileiof_writeInt16DatFile(dDs,[srcFileNameBase '_DSampled.dat']);
 
 % Low-pass filtering LFP data
 disp('Low-pass filtering...')
