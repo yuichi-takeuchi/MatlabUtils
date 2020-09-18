@@ -16,7 +16,7 @@ switch index
     case 7
         colorVec = [0.6350 0.0780 0.1840];
     otherwise
-        colorVec = [0 0 0];
+        colorVec = [0.8 0.8 0.8];
 end
 
 end
