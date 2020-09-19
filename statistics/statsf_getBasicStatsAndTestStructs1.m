@@ -34,9 +34,9 @@ for i = 1:length(VarNames)
     % statistical test
     sStatsTest(i).Variable = VarNames{i};
     sStatsTest(i).TTest1 = stats_BuildStructTTest1(False, True);
+    sStatsTest(i).SignRank = stats_BuildStructSignRank(False, True);
     sStatsTest(i).TTest2 = stats_BuildStructTTest2(False, True);
     sStatsTest(i).RankSum = stats_BuildStructRankSum(False, True);
-    sStatsTest(i).SignRank = stats_BuildStructSignRank(False, True);
     sStatsTest(i).KSTest2 = stats_BuildStructKSTest2(False, True);
 end
 
