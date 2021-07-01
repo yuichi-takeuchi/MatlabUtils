@@ -22,7 +22,7 @@ m = memmapfile([datfilenamebase '.dat'], 'format', 'int16');
 d = m.data;
 d = reshape(d, nChannels, []);
 dDs = d(:,1:floor(sr/srLFP):end);
-[flag] = yfWriteDatFile(dDs,[datfilenamebase '_DSampled.dat']);
+[flag] = fileiof_writeInt16DatFile(dDs,[datfilenamebase '_DSampled.dat']);
 
 % Reorganize channels from .dat file without stim and digital input channels
 disp('extracting analog channels...')
