@@ -4,7 +4,7 @@ function [ sBasicStats, sStatsTest ] = statsf_get2ANOVAStatsStructs3( dataVector
 % statistics and statistical tests.
 % 
 % INPUTS:
-%    dataVector: data vecotr to be analyzed
+%    dataVector: data vector to be analyzed
 %    linearVector: linear factor
 %    OnOffIndex (logical): logical vector, 0 for off and 1 for true
 %    varName (string): description of dataVector
