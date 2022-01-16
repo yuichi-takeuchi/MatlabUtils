@@ -4,7 +4,7 @@ function [ Mean, Std, Sem, Prctile ] = stats_Summary1( srcMat )
 %
 % caluculation arong column
 %   
-% Copyright (C) 20017, 2020Yuichi Takeuchi
+% Copyright (C) 2017-2020 Yuichi Takeuchi
 %
 
 Mean = mean(srcMat,'omitnan');
