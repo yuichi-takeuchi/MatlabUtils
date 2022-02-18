@@ -19,7 +19,7 @@ disp('getting channels...')
 % h = waitbar(0,'getting channels...');
 DataOut = zeros(length(Channels),nSamples);
 for i = 1:length(Channels)
-    waitbar(i/length(Channels))
+%     waitbar(i/length(Channels))
     DataOut(i,:) = m.Data.x(Channels(i),:);
 end
 
