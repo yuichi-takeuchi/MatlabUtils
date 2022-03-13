@@ -1,4 +1,4 @@
-function [ hs ] = plotf_TimeFreqSurfPlot1( t, f, data, fignum, hax, nrmlzres, scaleFactor )
+function [hs]=plotf_TimeFreqSurfPlot1(t,f,data,fignum,hax,nrmlzres,scaleFactor)
 % plots time-frequency surface plot 
 %
 % Usage:
@@ -14,34 +14,30 @@ function [ hs ] = plotf_TimeFreqSurfPlot1( t, f, data, fignum, hax, nrmlzres, sc
 % Output:
 %   hs: strucure of handles
 %   
-% Copyright (C) 2018 Yuichi Takeuchi
+% Copyright (C) 2018-2022 Yuichi Takeuchi
 
-hfig = figure(fignum);
-hcm = colormap(jet(nrmlzres));
+hfig=figure(fignum);
+hcm=colormap(jet(nrmlzres));
 
-hsrf = pcolor(hax,t,f,data);
+hsrf=pcolor(hax,t,f,data);
 caxis([0 nrmlzres/scaleFactor]);
 axis tight;
-shading interp;       
+shading interp;  
 set(hsrf,...
     'EdgeColor', 'none');
 
-%         h = colorbar;
-%         h.Label.String = 'Power';
-
-hylabel = ylabel('');
-hxlabel = xlabel('');
-htitle = title('');
+hylbl=ylabel('');
+hxlbl=xlabel('');
+httl=title('');
 
 % building handle structure
-hs.hfig = hfig;
-hs.hax = hax;
-hs.hsrf = hsrf;
-hs.hylabel = hylabel;
-hs.hxlabel = hxlabel;
-hs.title = htitle;
-hs.hcm = hcm;
-% hs.hcb = colorbar;
+hs.fig=hfig;
+hs.ax=hax;
+hs.srf=hsrf;
+hs.ylbl=hylbl;
+hs.xlbl=hxlbl;
+hs.ttl=httl;
+hs.hcm=hcm;
 
 end
 
