@@ -6,7 +6,7 @@ function [flag] = movf_WriteFrames1( srcName, destNameBase )
 % OUTPUT:
 %    flag: 1 with successful end
 %
-% Copyritght(c) 2019 Yuichi Takeuchi
+% Copyright(c) 2019 Yuichi Takeuchi
 %
 
 flag = 0;
